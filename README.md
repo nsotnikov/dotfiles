@@ -52,7 +52,7 @@ https://github.com/romkatv/powerlevel10k#oh-my-zsh
 
 ### Additional installed apps and tools
 
-- Amphetamine
+- Amphetamine, prevent machine from sleeping
 - Blackmagic Disk Speed, disk I/O test tool
 - Logi Options, mouse drivers ans settings
 - Unsplash, dynamic backgound wallpapers
