@@ -20,7 +20,8 @@ A personal set of configuration files.
     ln -sf ~/.dotfiles/.gitconfig ~/.gitconfig;
     ln -sf ~/.dotfiles/.p10k.zsh ~/.p10k.zsh;
     ln -sf ~/.dotfiles/.zshrc ~/.zshrc;
-    mkdir -p ~/.composer && ln -sf ~/.dotfiles/.composer/config.josn ~/.composer/config.json;
+    ln -sf ${BACKUP_FOLDER}/.ssh ~/.ssh;
+    ln -sf ${BACKUP_FOLDER}/.zshrc_alias_prv ~/.dotfiles/.zshrc_alias_prv;
 
 ### Install Homebrew and bundle
 https://docs.brew.sh/Installation
