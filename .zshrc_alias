@@ -50,9 +50,11 @@ alias e.hass="[[ ! -d "~/Volumes/hass_config" ]] && mount-hass; cd ~/Volumes/has
 alias rzsh="source ~/.zshrc" 
 
 # Directories
+alias d.home="cd ~"
+alias d.dot="cd ~/.dotfiles"
 alias d.dev="cd ~/Dev"
 alias d.downloads="cd ~/Downloads"
-alias d.home="cd ~"
+
 
 # Custom diskusage, human readable, max depth 1
 alias duc='du -h -d 1 2>/dev/null | sort -rh'
