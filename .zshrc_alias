@@ -13,7 +13,7 @@ BR="\n"
 
 # Rewrites
 alias df='df -h'
-alias ls="ls -alh"
+alias ls="ls -alhH"
 
 # Show all aliases
 alias hh="cat ~/.dofiles/.zshrc | grep -i '^alias' | awk '{print $2}'"
