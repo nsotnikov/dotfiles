@@ -1,0 +1,9 @@
+# Show manual as PDF
+function manpdf() {
+        man -t "$1" | open -f -a Preview.app
+    }
+
+# Create a new directory and enter it
+function mkd() {
+    mkdir -p "$@" && cd "$_";
+}

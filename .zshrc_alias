@@ -1,0 +1,109 @@
+# Colors
+BLACK="\e[30m"
+RED="\e[31m"
+GREEN="\e[32m"
+YELLOW="\e[33m"
+BLUE="\e[34m"
+PURPLE="\e[35m"
+CYAN="\e[36m"
+WHITE="\e[37m"
+NOCOLOR="\e[0m"
+
+BR="\n"
+
+# Rewrites
+alias df='df -h'
+alias ls="ls -alh"
+
+# Show all aliases
+alias hh="cat ~/.dofiles/.zshrc | grep -i '^alias' | awk '{print $2}'"
+
+# upgrade packages and cleanup
+alias up='
+    printf "${BR}${CYAN}List MacOS available updates\n";
+    printf "------------------------------------------------------------------${BR}${NOCOLOR}";
+    softwareupdate --list ;
+    printf "${BR}${CYAN}Update MacOS available software\n";
+    printf "------------------------------------------------------------------${BR}${NOCOLOR}";
+    softwareupdate -i -a;
+
+    printf "${BR}${CYAN}List brew outdated formula and cask\n";
+    printf "------------------------------------------------------------------${BR}${NOCOLOR}";
+    brew update && brew outdated;
+    printf "${BR}${CYAN}Update brew formula and cask\n";
+    printf "------------------------------------------------------------------${BR}${NOCOLOR}";
+    brew upgrade; brew cleanup -s --prune 1;
+    
+    printf "${BR}${CYAN}Update Oh My Zsh\n";
+    printf "------------------------------------------------------------------${BR}${NOCOLOR}";
+    omz update;
+'
+
+# Edit
+alias e.zsh="nvim ~/.zshrc"
+alias e.ssh="nvim ~/.ssh/config"
+alias e.git="nvim ~/.gitconfig"
+alias e.host="sudo nvim /etc/hosts"
+alias e.hass="[[ ! -d "~/Volumes/hass_config" ]] && mount-hass; cd ~/Volumes/hass_config && code -a ."
+
+# Reload zsh after editing
+alias rzsh="source ~/.zshrc" 
+
+# Directories
+alias d.dev="cd ~/Dev"
+alias d.downloads="cd ~/Downloads"
+alias d.home="cd ~"
+
+# Custom diskusage, human readable, max depth 1
+alias duc='du -h -d 1 2>/dev/null | sort -rh'
+
+# Quickly find file or directory
+alias ff='find . -type f -name 2>/dev/null'
+alias fd='find . -type d -name 2>/dev/null'
+
+# Directory change 
+alias ..='cd ..'
+alias ...='cd ../../'
+alias ....='cd ../../../'
+
+# Applications
+alias co="code ."
+
+# Remove ".DS_Store" files from the home folder
+alias rm.ds-home="find ~ -name .DS_Store -delete"
+# Remove ".*", "._*" and ".DS_Store" files in current directory
+alias rm.ds="find . -name '*.DS_Store' -delete; find . -type d -name '.*' -exec rm -rf {} +; find . -name '._*' -delete"
+# Remove recursive
+alias rmr="sudo rm -R"
+
+# Print the path with each directory separated by a newline
+alias path='echo -e ${PATH//:/\\n}'
+
+# get external ip
+alias ip_int='curl icanhazip.com'
+# get internat ip
+alias ip_ext="ipconfig getifaddr en0"
+# get all ip's in subnet 
+alias ip_all="nmap -sn 192.168.1.1/24"
+
+alias flushdns='dscacheutil -flushcache;sudo killall -HUP mDNSResponder;echo "✌️ DNS flushed"'
+
+# GIT
+alias g-c="git commit -m "
+alias g-sync-fork="git fetch --all; git pull upstream master"
+
+# DOCKER
+alias dk.start="open -a Docker"
+alias dk.dstop="killall Docker"
+alias dk.ps="docker ps"
+alias dk.psa="docker ps -a"
+alias dk.st="docker stats"
+alias dk.imgs="docker images -a"
+alias dk.cpup="docker-compose $@ up -d"
+alias dk.cpdown="docker-compose down"
+alias dk.cpstart="docker-compose start"
+alias dk.cpstop="docker-compose stop"
+
+# kleinAnzeigen python automation
+alias kl.start="python3 /Users/Ni/Dev/gh@ebayKleinanzeigen/kleinanzeigen.py --profile /Users/Ni/Dev/gh@ebayKleinanzeigen/config.json"
+alias kl.edit="code /Users/Ni/Dev/gh@ebayKleinanzeigen/config.json"

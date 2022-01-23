@@ -1,0 +1,10 @@
+# PATH
+export PATH=$PATH:~/.dotfiles/script
+
+# Load brew completions
+export FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+
+# ZSH plugin specific settings#
+
+## timer plugin settings
+TIMER_FORMAT='[%d]'; TIMER_PRECISION=3
