@@ -11,28 +11,39 @@ NOCOLOR="\e[0m"
 
 BR="\n"
 
+# MacOS specific aliases
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    alias ls=gls
+fi
+
 # Rewrites
 alias df='df -h'
-alias ls="ls -alhH"
+alias ll="ls -l --almost-all --human-readable --color --group-directories-first"
 
 # Show all aliases
-alias hh="cat ~/.dofiles/.zshrc | grep -i '^alias' | awk '{print $2}'"
+alias hh="cat ~/.dotfiles/.zshrc_alias | grep -i '^alias' | awk '{print $2}'"
 
 # upgrade packages and cleanup
 alias up='
     printf "${BR}${CYAN}List MacOS available updates\n";
     printf "------------------------------------------------------------------${BR}${NOCOLOR}";
     softwareupdate --list ;
+
     printf "${BR}${CYAN}Update MacOS available software\n";
     printf "------------------------------------------------------------------${BR}${NOCOLOR}";
     softwareupdate -i -a;
 
-    printf "${BR}${CYAN}List brew outdated formula and cask\n";
+    printf "${BR}${CYAN}List Brew outdated formula and cask\n";
     printf "------------------------------------------------------------------${BR}${NOCOLOR}";
     brew update && brew outdated;
-    printf "${BR}${CYAN}Update brew formula and cask\n";
+
+    printf "${BR}${CYAN}Update Brew formula and cask\n";
     printf "------------------------------------------------------------------${BR}${NOCOLOR}";
-    brew upgrade; brew cleanup -s --prune 1;
+    brew upgrade; 
+
+    printf "${BR}${CYAN}Cleanup Brew\n";
+    printf "------------------------------------------------------------------${BR}${NOCOLOR}";
+    brew cleanup -s --prune 1;
     
     printf "${BR}${CYAN}Update Oh My Zsh\n";
     printf "------------------------------------------------------------------${BR}${NOCOLOR}";
