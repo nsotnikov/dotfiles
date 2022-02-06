@@ -29,3 +29,6 @@ Temporary Items
 ### Custom ###
 tmp/
 .secrets
+
+# IDE #
+/.idea/
