@@ -10,46 +10,32 @@ A personal set of configuration files.
 
 ### Clone and install dotfiles:
 
-    git clone https://github.com/nsotnikov/dotfiles.git ~/.dotfiles
-
-    # Use ssh if already set up
-    git clone git@github.com:nsotnikov/dotfiles.git ~/.dotfiles
-
-### Create symlinks in the home direcotry
-
-    ln -sf ~/.dotfiles/.gitconfig ~/.gitconfig;
-    ln -sf ~/.dotfiles/.p10k.zsh ~/.p10k.zsh;
-    ln -sf ~/.dotfiles/.zshrc ~/.zshrc;
-    ln -sf ${BACKUP_FOLDER}/.ssh ~/.ssh;
-    ln -sf ${BACKUP_FOLDER}/.zshrc_alias_prv ~/.dotfiles/.zshrc_alias_prv;
-
+    git clone --recurse-submodules https://github.com/nsotnikov/dotfiles.git ~/.dotfiles
+ 
 ### Install Homebrew and bundle
 https://docs.brew.sh/Installation
 
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     brew bundle --file ~/.dotfiles/Brewfile
 
+### Create symlinks in the home direcotry
+
+    # Link promt configuration
+    ln -sf ~/.dotfiles/.zshrc ~/.zshrc;
+    ln -sf ~/.dotfiles/.bashrc ~/.bashrc;
+
+    # Link addtional tools config
+    ln -sf ~/.dotfiles/.gitconfig ~/.gitconfig;
+
+    # Link secrets, first set the backup folder variable
+    ln -sf ${BACKUP_FOLDER}/.ssh ~/.ssh;
+    ln -sf ${BACKUP_FOLDER}/.secrets ~/.dotfiles/.secrets;
+
+
 ### Install Oh My Zsh framework
 https://github.com/ohmyzsh/ohmyzsh#basic-installation
 
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-Oh My Zsh plugins:
-https://github.com/zsh-users
-
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-
-    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-
-### Install Powerlevel10k Zsh theme  
-https://github.com/romkatv/powerlevel10k#oh-my-zsh
-
-1. Clone the repository:
-
-        git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-
-2. Set ZSH_THEME="powerlevel10k/powerlevel10k" in ~/.zshrc.
-
 
 ### Additional installed apps and tools
 
@@ -58,7 +44,7 @@ https://github.com/romkatv/powerlevel10k#oh-my-zsh
 - Logi Options, mouse drivers ans settings
 - Unsplash, dynamic backgound wallpapers
 
-### defaults
+### defaults, Change mac settings via command
 https://macos-defaults.com/#%F0%9F%92%BB-list-of-commands
 
     defaults write com.apple.Finder "AppleShowAllFiles" -bool "true"
@@ -72,6 +58,17 @@ https://macos-defaults.com/#%F0%9F%92%BB-list-of-commands
 Update brew file
 
     brew bundle dump --describe --force --file ~/.dotfiles/Brewfile
+
+Pull submodules changes 
+
+    git submodule update --recursive
+
+## Misc
+You may want to compare promt loading speed, e.g. after configuration changes.
+To do so just run:
+
+    time zsh -i -c "echo -n"
+    time bash -i -c "echo -n"
 
 ---
 

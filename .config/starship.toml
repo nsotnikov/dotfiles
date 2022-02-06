@@ -1,0 +1,15 @@
+# Show current time
+[time]
+disabled = false
+time_format = "%H:%M"
+format = "$time(white) "
+
+# Show command execution time
+[cmd_duration]
+min_time = 500
+format = "took [$duration](bold yellow)"
+
+# Change directory output
+[directory]
+truncation_length = 10
+truncate_to_repo = false

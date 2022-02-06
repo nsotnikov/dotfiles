@@ -28,4 +28,4 @@ Temporary Items
 
 ### Custom ###
 tmp/
-.zshrc_alias_prv
+.secrets

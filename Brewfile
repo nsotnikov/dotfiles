@@ -2,15 +2,26 @@ tap "davidalger/warden"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-fonts"
+tap "homebrew/cask-versions"
 tap "homebrew/core"
+# GNU File, Shell, and Text utilities
+brew "coreutils"
 # Isolated development environments using Docker
 brew "docker-compose"
+# Platform built on V8 to build network applications
+brew "node"
 # Monitor data's progress through a pipe
 brew "pv"
+# Cross-shell prompt for astronauts
+brew "starship"
+# Executes a program periodically, showing output fullscreen
+brew "watch"
 # Warden is a CLI utility for working with docker-compose environments
 brew "davidalger/warden/warden"
 # Application uninstaller
 cask "appcleaner"
+# Tool to list all active shortcuts of the current application
+cask "cheatsheet"
 # App to build and share containerized applications and microservices
 cask "docker"
 # Client for the Dropbox cloud storage service
@@ -41,9 +52,13 @@ cask "stats"
 cask "syntax-highlight"
 # Messaging app with a focus on speed and security
 cask "telegram"
+# Open-source BitTorrent client
+cask "transmission"
 # Disk encryption software focusing on security based on TrueCrypt
 cask "veracrypt"
 # Open-source code editor
 cask "visual-studio-code"
+# VPN client for secure internet access and private browsing
+cask "windscribe"
 # Video communication and virtual meeting platform
 cask "zoom"

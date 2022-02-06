@@ -1,0 +1,12 @@
+# Exports
+export PATH=$PATH:~/.dotfiles/script
+
+# Load ZSH specific environment variables
+export FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+
+# Configure history save options
+export HISTSIZE=10000
+export SAVEHIST=10000
+
+# Set starship config location
+export STARSHIP_CONFIG=~/.dotfiles/.config/starship.toml

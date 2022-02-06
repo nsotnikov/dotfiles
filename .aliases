@@ -21,19 +21,17 @@ alias df='df -h'
 alias ll="ls -l --almost-all --human-readable --color --group-directories-first"
 
 # Show all aliases
-alias hh="cat ~/.dotfiles/.zshrc_alias | grep -i '^alias' | awk '{print $2}'"
+alias hh="cat ~/.dotfiles/.aliases | grep --ignore-case '^alias\|#'"
 
-# upgrade packages and cleanup
+# Upgrade packages and cleanup
 alias up='
-    printf "${BR}${CYAN}List MacOS available updates\n";
-    printf "------------------------------------------------------------------${BR}${NOCOLOR}";
+    printf "${BR}${CYAN}List MacOS available updates${BR}";
+    printf "------------------------------------------------------------------${BR}${BR}${NOCOLOR}";
     softwareupdate --list ;
+    printf "${BR}Run following command to install all MacOS available updates:\n";
+    printf "${BLUE}softwareupdate -i -a${BR}${NOCOLOR}"
 
-    printf "${BR}${CYAN}Update MacOS available software\n";
-    printf "------------------------------------------------------------------${BR}${NOCOLOR}";
-    softwareupdate -i -a;
-
-    printf "${BR}${CYAN}List Brew outdated formula and cask\n";
+    printf "${BR}${CYAN}List Brew outdated formula and cask${BR}";
     printf "------------------------------------------------------------------${BR}${NOCOLOR}";
     brew update && brew outdated;
 
@@ -44,16 +42,26 @@ alias up='
     printf "${BR}${CYAN}Cleanup Brew\n";
     printf "------------------------------------------------------------------${BR}${NOCOLOR}";
     brew cleanup -s --prune 1;
-    
-    printf "${BR}${CYAN}Update Oh My Zsh\n";
+
+
+    printf "${BR}${CYAN}List global NPM updates\n";
     printf "------------------------------------------------------------------${BR}${NOCOLOR}";
-    omz update;
+    ncu -g;
+'
+
+# Backup brew packages
+alias bu='
+    printf "${BR}${CYAN}Backup brew packages${BR}";
+    printf "------------------------------------------------------------------${BR}${NOCOLOR}";
+    brew bundle dump --describe --force --file ~/.dotfiles/Brewfile;
+    printf "${BR}Done.\n";
+   
 '
 
 # Edit
-alias e.zsh="nvim ~/.zshrc"
-alias e.ssh="nvim ~/.ssh/config"
-alias e.git="nvim ~/.gitconfig"
+alias e.zsh="code ~/.dotfiles/.zshrc"
+alias e.git="code ~/.dotfiles/.gitconfig"
+alias e.ssh="code ~/.ssh/config"
 alias e.host="sudo nvim /etc/hosts"
 alias e.hass="[[ ! -d "~/Volumes/hass_config" ]] && mount-hass; cd ~/Volumes/hass_config && code -a ."
 
@@ -92,11 +100,11 @@ alias rmr="sudo rm -R"
 # Print the path with each directory separated by a newline
 alias path='echo -e ${PATH//:/\\n}'
 
-# get external ip
+# Get external ip
 alias ip_int='curl icanhazip.com'
-# get internat ip
+# Get internat ip
 alias ip_ext="ipconfig getifaddr en0"
-# get all ip's in subnet 
+# Get all ip's in subnet 
 alias ip_all="nmap -sn 192.168.1.1/24"
 
 alias flushdns='dscacheutil -flushcache;sudo killall -HUP mDNSResponder;echo "✌️ DNS flushed"'
@@ -117,7 +125,7 @@ alias glg='git log --stat'
 alias gc="git commit -m "
 alias g-sync-fork="git fetch --all; git pull upstream master"
 
-# DOCKER
+# Docker
 alias dk.start="open -a Docker"
 alias dk.dstop="killall Docker"
 alias dk.ps="docker ps"
@@ -129,6 +137,6 @@ alias dk.cpdown="docker-compose down"
 alias dk.cpstart="docker-compose start"
 alias dk.cpstop="docker-compose stop"
 
-# kleinAnzeigen python automation
+# KleinAnzeigen python automation
 alias kl.start="python3 /Users/Ni/Dev/gh@ebayKleinanzeigen/kleinanzeigen.py --profile /Users/Ni/Dev/gh@ebayKleinanzeigen/config.json"
 alias kl.edit="code /Users/Ni/Dev/gh@ebayKleinanzeigen/config.json"
