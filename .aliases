@@ -1,36 +1,30 @@
 # Colors
-BLACK="\e[30m"
-RED="\e[31m"
-GREEN="\e[32m"
-YELLOW="\e[33m"
-BLUE="\e[34m"
-PURPLE="\e[35m"
-CYAN="\e[36m"
-WHITE="\e[37m"
-NOCOLOR="\e[0m"
+BLACK='\e[30m'
+RED='\e[31m'
+GREEN='\e[32m'
+YELLOW='\e[33m'
+BLUE='\e[34m'
+PURPLE='\e[35m'
+CYAN='\e[36m'
+WHITE='\e[37m'
+NOCOLOR='\e[0m'
 
-BR="\n"
+BR='\n'
 
 # MacOS specific aliases
-if [[ "$OSTYPE" == "darwin"* ]]; then
-    alias ls=gls
+if [[ $OSTYPE == 'darwin'* ]]; then
+   alias ls='echo check'
 fi
 
 # Rewrites
 alias df='df -h'
-alias ll="ls -l --almost-all --human-readable --color --group-directories-first"
+alias ll='gls -l --almost-all --human-readable --color --group-directories-first'
 
 # Show all aliases
 alias hh="cat ~/.dotfiles/.aliases | grep --ignore-case '^alias\|#'"
 
 # Upgrade packages and cleanup
 alias up='
-    printf "${BR}${CYAN}List MacOS available updates${BR}";
-    printf "------------------------------------------------------------------${BR}${BR}${NOCOLOR}";
-    softwareupdate --list ;
-    printf "${BR}Run following command to install all MacOS available updates:\n";
-    printf "${BLUE}softwareupdate -i -a${BR}${NOCOLOR}"
-
     printf "${BR}${CYAN}List Brew outdated formula and cask${BR}";
     printf "------------------------------------------------------------------${BR}${NOCOLOR}";
     brew update && brew outdated;
@@ -49,6 +43,14 @@ alias up='
     ncu -g;
 '
 
+alias upmac='
+    printf "${BR}${CYAN}List MacOS available updates${BR}";
+    printf "------------------------------------------------------------------${BR}${BR}${NOCOLOR}";
+    softwareupdate --list;
+    printf "${BR}Run following command to install all MacOS available updates:\n";
+    printf "${BLUE}softwareupdate -i -a${BR}${NOCOLOR}"
+'
+
 # Backup brew packages
 alias bu='
     printf "${BR}${CYAN}Backup brew packages${BR}";
@@ -59,20 +61,24 @@ alias bu='
 '
 
 # Edit
-alias e.zsh="code ~/.dotfiles/.zshrc"
-alias e.git="code ~/.dotfiles/.gitconfig"
-alias e.ssh="code ~/.ssh/config"
-alias e.host="sudo nvim /etc/hosts"
-alias e.hass="[[ ! -d "~/Volumes/hass_config" ]] && mount-hass; cd ~/Volumes/hass_config && code -a ."
+alias e-zsh='e.dots'
+alias e-dots='code -a ~/.dotfiles/'
+alias e-git='code ~/.dotfiles/.gitconfig'
+alias e-ssh='code ~/.ssh/config'
+alias e-host='sudo nvim /etc/hosts'
+alias e-hass="[[ ! -d "~/Volumes/hass_config" ]] && mount-hass; cd ~/Volumes/hass_config && code -a ."
+
+alias phpst='open -a "`ls -dt /Applications/PhpStorm*|head -1`"'
+
 
 # Reload zsh after editing
-alias rzsh="source ~/.zshrc" 
+alias rzsh='source ~/.zshrc' 
 
 # Directories
-alias d.home="cd ~"
-alias d.dot="cd ~/.dotfiles"
-alias d.dev="cd ~/Dev"
-alias d.downloads="cd ~/Downloads"
+alias d-home='cd ~'
+alias d-dot='cd ~/.dotfiles'
+alias d-dev='cd ~/Dev'
+alias d-downloads='cd ~/Downloads'
 
 
 # Custom diskusage, human readable, max depth 1
@@ -88,55 +94,48 @@ alias ...='cd ../../'
 alias ....='cd ../../../'
 
 # Applications
-alias co="code ."
+alias co='code .'
 
-# Remove ".DS_Store" files from the home folder
-alias rm.ds-home="find ~ -name .DS_Store -delete"
-# Remove ".*", "._*" and ".DS_Store" files in current directory
+# Remove '.DS_Store' files from the home folder
+alias rm.ds-home='find ~ -name .DS_Store -delete'
+# Remove '.*', '._*' and '.DS_Store' files in current directory
 alias rm.ds="find . -name '*.DS_Store' -delete; find . -type d -name '.*' -exec rm -rf {} +; find . -name '._*' -delete"
 # Remove recursive
-alias rmr="sudo rm -R"
+alias rmr='sudo rm -R'
 
 # Print the path with each directory separated by a newline
 alias path='echo -e ${PATH//:/\\n}'
 
 # Get external ip
-alias ip_int='curl icanhazip.com'
+alias ip-int='curl icanhazip.com'
 # Get internat ip
-alias ip_ext="ipconfig getifaddr en0"
+alias ip-ext='ipconfig getifaddr en0'
 # Get all ip's in subnet 
-alias ip_all="nmap -sn 192.168.1.1/24"
+alias ip-all='nmap -sn 192.168.1.1/24'
 
 alias flushdns='dscacheutil -flushcache;sudo killall -HUP mDNSResponder;echo "✌️ DNS flushed"'
 
 # GIT
 alias g='git'
 
-alias ga='git add'
-alias gaa='git add --all'
-
-alias gl='git pull'
-alias gp='git push'
-alias gpf='git push --force-with-lease'
-
-alias gl="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset' --date=short"
-alias glg='git log --stat'
-
-alias gc="git commit -m "
-alias g-sync-fork="git fetch --all; git pull upstream master"
+alias g-a='git add'
+alias g-aa='git add --all'
+alias g-pl='git pull'
+alias g-p='git push'
+alias g-pf='git push --force-with-lease'
+alias g-l="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset' --date=short"
+alias g-lg='git log --stat'
+alias g-c='git commit -m '
+alias g-sync-fork='git fetch --all; git pull upstream master'
 
 # Docker
-alias dk.start="open -a Docker"
-alias dk.dstop="killall Docker"
-alias dk.ps="docker ps"
-alias dk.psa="docker ps -a"
-alias dk.st="docker stats"
-alias dk.imgs="docker images -a"
-alias dk.cpup="docker-compose $@ up -d"
-alias dk.cpdown="docker-compose down"
-alias dk.cpstart="docker-compose start"
-alias dk.cpstop="docker-compose stop"
-
-# KleinAnzeigen python automation
-alias kl.start="python3 /Users/Ni/Dev/gh@ebayKleinanzeigen/kleinanzeigen.py --profile /Users/Ni/Dev/gh@ebayKleinanzeigen/config.json"
-alias kl.edit="code /Users/Ni/Dev/gh@ebayKleinanzeigen/config.json"
+alias dk-start='open -a Docker'
+alias dk-dstop='killall Docker'
+alias dk-ps='docker ps'
+alias dk-psa='docker ps -a'
+alias dk-st='docker stats'
+alias dk-imgs='docker images -a'
+alias dk-cpup="docker-compose $@ up -d"
+alias dk-cpdown='docker-compose down'
+alias dk-cpstart='docker-compose start'
+alias dk-cpstop='docker-compose stop'
