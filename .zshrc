@@ -4,10 +4,10 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # Initiate Starship promt: https://starship.rs/config/
 eval "$(starship init zsh)"
 
-# Configure ZSH
+# Don't save duplicate history
 setopt HIST_SAVE_NO_DUPS
 # Change zsh-autosuggestions color
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=240"
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=240'
 
 # Load ZSH packages
 source ~/.dotfiles/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -17,7 +17,7 @@ fpath=(~/.dotfiles/zsh/zsh-completions/src $fpath)
 # Navigate through autosuggestion wit arrow keys
 zstyle ':completion:*' menu yes select
 zstyle ':completion:*:*:cd:*' menu yes select
-# Make search up and down work, so partially type and hit up/down to find relevant stuff
+# Make up and down zsh history search work
 bindkey '^[[A' up-line-or-search
 bindkey '^[[B' down-line-or-search
 
