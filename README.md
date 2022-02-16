@@ -18,14 +18,14 @@ https://docs.brew.sh/Installation
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     brew bundle --file ~/.dotfiles/Brewfile
 
-### Create symlinks in the home direcotry
+### Create symlinks in the home directory
 
     # Link promt configuration
     ln -sf ~/.dotfiles/.zshrc ~/.zshrc;
     ln -sf ~/.dotfiles/.bashrc ~/.bashrc;
 
-    # Link addtional tools config
-    ln -sf ~/.dotfiles/.gitconfig ~/.gitconfig;
+    # Link additional tools config
+    ln -sf ~/.dotfiles/.gitconfig ~/.gitconfig;```````
 
     # Link secrets, first set the backup folder variable
     ln -sf ${BACKUP_FOLDER}/.ssh ~/.ssh;
@@ -42,7 +42,7 @@ https://github.com/ohmyzsh/ohmyzsh#basic-installation
 - Amphetamine, prevent machine from sleeping
 - Blackmagic Disk Speed, disk I/O test tool
 - Logi Options, mouse drivers ans settings
-- Unsplash, dynamic backgound wallpapers
+- Unsplash, dynamic background wallpapers
 
 ### defaults, Change mac settings via command
 https://macos-defaults.com/#%F0%9F%92%BB-list-of-commands
