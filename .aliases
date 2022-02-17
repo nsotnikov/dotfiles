@@ -13,7 +13,7 @@ BR='\n'
 
 # MacOS specific aliases
 if [[ $OSTYPE == 'darwin'* ]]; then
-   alias ls='echo check'
+   
 fi
 
 # Rewrites
