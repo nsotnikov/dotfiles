@@ -35,8 +35,8 @@ alias up='
 
     printf "${BR}${CYAN}Cleanup Brew\n";
     printf "------------------------------------------------------------------${BR}${NOCOLOR}";
+    brew autoremove;
     brew cleanup -s --prune 1;
-
 
     printf "${BR}${CYAN}List global NPM updates\n";
     printf "------------------------------------------------------------------${BR}${NOCOLOR}";
@@ -89,7 +89,8 @@ alias duc='du -h -d 1 2>/dev/null | sort -rh'
 alias ff='find . -type f -name 2>/dev/null'
 alias fd='find . -type d -name 2>/dev/null'
 
-# Directory change 
+# File system
+alias lsa="ls -alh"
 alias ..='cd ..'
 alias ...='cd ../../'
 alias ....='cd ../../../'
