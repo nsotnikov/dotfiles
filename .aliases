@@ -29,18 +29,21 @@ alias up='
     printf "------------------------------------------------------------------${BR}${NOCOLOR}";
     brew update && brew outdated;
 
-    printf "${BR}${CYAN}Update Brew formula and cask\n";
+    printf "${BR}${GREEN}Update Brew formula and cask\n";
     printf "------------------------------------------------------------------${BR}${NOCOLOR}";
     brew upgrade; 
 
-    printf "${BR}${CYAN}Cleanup Brew\n";
+    printf "${BR}${BLUE}Cleanup Brew\n";
     printf "------------------------------------------------------------------${BR}${NOCOLOR}";
     brew autoremove;
     brew cleanup -s --prune 1;
-
-    printf "${BR}${CYAN}List global NPM updates\n";
+    
+    printf "${BR}${CYAN}List outdated PIP packages\n";
     printf "------------------------------------------------------------------${BR}${NOCOLOR}";
-    ncu -g;
+    pip-review
+    printf "${BR}${GREEN}Update PIP packages\n";
+    printf "------------------------------------------------------------------${BR}${NOCOLOR}";
+    pip-review --local --auto
 '
 
 alias upmac='
