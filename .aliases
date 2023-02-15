@@ -16,50 +16,72 @@ if [[ $OSTYPE == 'darwin'* ]]; then
    
 fi
 
+# Show all aliases
+alias hh="cat ~/.dotfiles/.aliases | grep --ignore-case '^alias\|#'"
+
 # Rewrites
 alias df='df -h'
 alias ll='gls -l --almost-all --human-readable --color --group-directories-first'
 
-# Show all aliases
-alias hh="cat ~/.dotfiles/.aliases | grep --ignore-case '^alias\|#'"
-
 # Upgrade packages and cleanup
 alias up='
-    printf "${BR}${CYAN}List Brew outdated formula and cask${BR}";
+    upbrew;
+    uppip;
+    upmac;
+    backup-brew;
+'
+
+alias upbrew='
+    printf "${BR}${YELLOW}List Brew outdated formula and cask${BR}";
     printf "------------------------------------------------------------------${BR}${NOCOLOR}";
     brew update && brew outdated;
 
-    printf "${BR}${GREEN}Update Brew formula and cask\n";
+    printf "${BR}${YELLOW}Update Brew formula and cask\n";
     printf "------------------------------------------------------------------${BR}${NOCOLOR}";
-    brew upgrade; 
+    brew upgrade;
+    printf "${GREEN}Done.${BR}${NOCOLOR}";
 
-    printf "${BR}${BLUE}Cleanup Brew\n";
+    printf "${BR}${YELLOW}Cleanup Brew${BR}";
     printf "------------------------------------------------------------------${BR}${NOCOLOR}";
     brew autoremove;
     brew cleanup -s --prune 1;
-    
-    printf "${BR}${CYAN}List outdated PIP packages\n";
+    printf "${GREEN}Done.${BR}${NOCOLOR}";
+'
+
+alias uppip='
+    printf "${BR}${YELLOW}List outdated PIP packages${BR}";
     printf "------------------------------------------------------------------${BR}${NOCOLOR}";
     pip-review
-    printf "${BR}${GREEN}Update PIP packages\n";
     printf "------------------------------------------------------------------${BR}${NOCOLOR}";
     pip-review --local --auto
+    printf "${GREEN}Done.${BR}${NOCOLOR}";
+'
+
+alias upnpm='
+    printf "${BR}${YELLOW}List outdated NPM packages${BR}";
+    printf "------------------------------------------------------------------${BR}${NOCOLOR}";
+    npm outdated -g --depth=0
+    printf "${BR}${YELLOW}Update NPM packages${BR}";
+    printf "------------------------------------------------------------------${BR}${NOCOLOR}";
+    npm update -g
+    printf "${GREEN}Done.${BR}${NOCOLOR}";
 '
 
 alias upmac='
-    printf "${BR}${CYAN}List MacOS available updates${BR}";
+    printf "${BR}${YELLOW}List MacOS available updates${BR}";
     printf "------------------------------------------------------------------${BR}${BR}${NOCOLOR}";
     softwareupdate --list;
-    printf "${BR}Run following command to install all MacOS available updates:\n";
-    printf "${BLUE}softwareupdate -i -a${BR}${NOCOLOR}"
+    printf "${BR}Run following command to install all MacOS available updates:${BR}";
+    printf "softwareupdate -i -a${BR}"
+
 '
 
 # Backup brew packages
-alias bu='
-    printf "${BR}${CYAN}Backup brew packages${BR}";
+alias backup-brew='
+    printf "${BR}${YELLOW}Backup brew packages${BR}";
     printf "------------------------------------------------------------------${BR}${NOCOLOR}";
     brew bundle dump --describe --force --file ~/.dotfiles/Brewfile;
-    printf "${BR}Done.\n";
+    printf "${GREEN}Done.${BR}${NOCOLOR}";
    
 '
 

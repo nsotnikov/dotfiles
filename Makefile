@@ -7,7 +7,7 @@ PROJECT_NAME = .dotfiles
 # Avoid a conflict with a files of the same receipe name
 .PHONY: help
 
-db-import:  ## Import db from ... folder
+install:  ## Install dotfiles
 	@echo "check.\c" && echo "check"
 
 help:  ## Display this help
