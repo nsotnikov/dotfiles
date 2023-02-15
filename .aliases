@@ -25,10 +25,11 @@ alias ll='gls -l --almost-all --human-readable --color --group-directories-first
 
 # Upgrade packages and cleanup
 alias up='
-    upbrew;
-    uppip;
-    upmac;
-    backup-brew;
+    [[ $(brew -v 2> /dev/null) ]] && (upbrew);
+    [[ $(pip -v 2> /dev/null)  ]] && (uppip);
+    [[ $(npm -v 2> /dev/null)  ]] && (upnpm);
+    [[ $(uname -s) == "Darwin" ]] && (upmac);
+    [[ $(brew -v 2> /dev/null) ]] && (backup-brew);
 '
 
 alias upbrew='
@@ -52,6 +53,7 @@ alias uppip='
     printf "${BR}${YELLOW}List outdated PIP packages${BR}";
     printf "------------------------------------------------------------------${BR}${NOCOLOR}";
     pip-review
+    printf "${BR}${YELLOW}Update PIP packages${BR}";
     printf "------------------------------------------------------------------${BR}${NOCOLOR}";
     pip-review --local --auto
     printf "${GREEN}Done.${BR}${NOCOLOR}";
