@@ -56,6 +56,9 @@ alias uppip='
     printf "${BR}${YELLOW}Update PIP packages${BR}";
     printf "------------------------------------------------------------------${BR}${NOCOLOR}";
     pip-review --local --auto
+    printf "${BR}${YELLOW}Purge PIP cache${BR}";
+    printf "------------------------------------------------------------------${BR}${NOCOLOR}";
+    pip cache purge
     printf "${GREEN}Done.${BR}${NOCOLOR}";
 '
 
