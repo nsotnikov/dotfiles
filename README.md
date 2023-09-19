@@ -1,19 +1,21 @@
 # Dotfiles
+
 A personal set of configuration files.
 
 ## Install on clean installation of MacOS
 
-### Update and install Command Line Tools:
+### Update and install Command Line Tools
 
     sudo softwareupdate -i -a
     xcode-select --install
 
-### Clone and install dotfiles:
+### Clone and install dotfiles
 
     git clone --recurse-submodules https://github.com/nsotnikov/dotfiles.git ~/.dotfiles
- 
+
 ### Install Homebrew and bundle
-https://docs.brew.sh/Installation
+
+<https://docs.brew.sh/Installation>
 
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     brew bundle --file ~/.dotfiles/Brewfile
@@ -31,12 +33,6 @@ https://docs.brew.sh/Installation
     ln -sf ${BACKUP_FOLDER}/.ssh ~/.ssh;
     ln -sf ${BACKUP_FOLDER}/.secrets ~/.dotfiles/.secrets;
 
-
-### Install Oh My Zsh framework
-https://github.com/ohmyzsh/ohmyzsh#basic-installation
-
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
 ### Additional installed apps and tools
 
 - Amphetamine, prevent machine from sleeping
@@ -45,7 +41,8 @@ https://github.com/ohmyzsh/ohmyzsh#basic-installation
 - Unsplash, dynamic background wallpapers
 
 ### defaults, Change mac settings via command
-https://macos-defaults.com/#%F0%9F%92%BB-list-of-commands
+
+<https://macos-defaults.com/#%F0%9F%92%BB-list-of-commands>
 
     defaults write com.apple.Finder "AppleShowAllFiles" -bool "true"
     defaults write com.apple.dock "tilesize" -int "42"
@@ -59,11 +56,12 @@ Update brew file
 
     brew bundle dump --describe --force --file ~/.dotfiles/Brewfile
 
-Pull submodules changes 
+Pull submodules changes
 
-    git submodule update --recursive
+    git submodule update --recursive --remote
 
 ## Misc
+
 You may want to compare promt loading speed, e.g. after configuration changes.
 To do so just run:
 

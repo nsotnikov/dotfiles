@@ -7,3 +7,14 @@ function manpdf() {
 function mkd() {
     mkdir -p "$@" && cd "$_";
 }
+
+function dashcam() {
+    DIR_SRC=/Volumes/TESLADRIVE/TeslaCam;
+    DIR_DESTINATION=/Users/Ni/Movies;
+    if [ -d "$DIR_SRC" ] && [ -d "$DIR_DESTINATION" ]; then
+        echo "$DIR_SRC & $DIR_DESTINATION start copying dashcam files files."
+        rsync -avu --info=progress2 --no-inc-recursive --human-readable $DIR_SRC $DIR_DESTINATION
+    else
+        echo "$DIR_SRC or $DIR_DESTINATION directory not exists."
+    fi
+}
