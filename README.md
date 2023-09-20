@@ -44,10 +44,11 @@ A personal set of configuration files.
 
 <https://macos-defaults.com/#%F0%9F%92%BB-list-of-commands>
 
+    # Show hidden files
     defaults write com.apple.Finder "AppleShowAllFiles" -bool "true"
-    defaults write com.apple.dock "tilesize" -int "42"
     # Keep folders on top when sorting by name
     defaults write com.apple.finder _FXSortFoldersFirst -boolean true
+    # Restart Finder to apply settings
     killall Finder
 
 ---
