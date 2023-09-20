@@ -46,6 +46,8 @@ A personal set of configuration files.
 
     defaults write com.apple.Finder "AppleShowAllFiles" -bool "true"
     defaults write com.apple.dock "tilesize" -int "42"
+    # Keep folders on top when sorting by name
+    defaults write com.apple.finder _FXSortFoldersFirst -boolean true
     killall Finder
 
 ---
