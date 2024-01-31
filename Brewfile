@@ -9,8 +9,6 @@ tap "wardenenv/warden"
 brew "blueutil"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
-# Isolated development environments using Docker
-brew "docker-compose"
 # Perl lib for reading and writing EXIF metadata
 brew "exiftool"
 # OpenType text shaping engine
