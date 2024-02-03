@@ -23,73 +23,6 @@ alias hh="cat ~/.dotfiles/.aliases | grep --ignore-case '^alias\|#'"
 alias df='df -h'
 alias ll='gls -l --almost-all --human-readable --color --group-directories-first'
 
-# Upgrade packages and cleanup
-alias up='
-    [[ $(brew -v 2> /dev/null) ]] && (upbrew);
-    [[ $(pip -v 2> /dev/null)  ]] && (uppip);
-    [[ $(npm -v 2> /dev/null)  ]] && (upnpm);
-    [[ $(uname -s) == "Darwin" ]] && (upmac);
-    [[ $(brew -v 2> /dev/null) ]] && (backup-brew);
-'
-
-alias upbrew='
-    printf "${BR}${YELLOW}List Brew outdated formula and cask${BR}";
-    printf "------------------------------------------------------------------${BR}${NOCOLOR}";
-    brew update && brew outdated;
-
-    printf "${BR}${YELLOW}Update Brew formula and cask\n";
-    printf "------------------------------------------------------------------${BR}${NOCOLOR}";
-    brew upgrade;
-    printf "${GREEN}Done.${BR}${NOCOLOR}";
-
-    printf "${BR}${YELLOW}Cleanup Brew${BR}";
-    printf "------------------------------------------------------------------${BR}${NOCOLOR}";
-    brew autoremove;
-    brew cleanup -s --prune 1;
-    printf "${GREEN}Done.${BR}${NOCOLOR}";
-'
-
-alias uppip='
-    printf "${BR}${YELLOW}List outdated PIP packages${BR}";
-    printf "------------------------------------------------------------------${BR}${NOCOLOR}";
-    pip-review
-    printf "${BR}${YELLOW}Update PIP packages${BR}";
-    printf "------------------------------------------------------------------${BR}${NOCOLOR}";
-    pip-review --local --auto
-    printf "${BR}${YELLOW}Purge PIP cache${BR}";
-    printf "------------------------------------------------------------------${BR}${NOCOLOR}";
-    pip cache purge
-    printf "${GREEN}Done.${BR}${NOCOLOR}";
-'
-
-alias upnpm='
-    printf "${BR}${YELLOW}List outdated NPM packages${BR}";
-    printf "------------------------------------------------------------------${BR}${NOCOLOR}";
-    npm outdated -g --depth=0
-    printf "${BR}${YELLOW}Update NPM packages${BR}";
-    printf "------------------------------------------------------------------${BR}${NOCOLOR}";
-    npm update -g
-    printf "${GREEN}Done.${BR}${NOCOLOR}";
-'
-
-alias upmac='
-    printf "${BR}${YELLOW}List MacOS available updates${BR}";
-    printf "------------------------------------------------------------------${BR}${BR}${NOCOLOR}";
-    softwareupdate --list;
-    printf "${BR}Run following command to install all MacOS available updates:${BR}";
-    printf "softwareupdate -i -a${BR}"
-
-'
-
-# Backup brew packages
-alias backup-brew='
-    printf "${BR}${YELLOW}Backup brew packages${BR}";
-    printf "------------------------------------------------------------------${BR}${NOCOLOR}";
-    brew bundle dump --describe --force --file ~/.dotfiles/Brewfile;
-    printf "${GREEN}Done.${BR}${NOCOLOR}";
-   
-'
-
 # Edit
 alias e-zsh='e-dot'
 alias e-git='e-dot'
@@ -99,7 +32,7 @@ alias e-host='code --add /etc/hosts'
 alias e-composer='code --new-window ~/.composer/'
 alias e-hass="[[ ! -d "~/Volumes/hass_config" ]] && mount-hass; cd ~/Volumes/hass_config && code -a ."
 
-alias phpst='open -a "$(ls -dt /Applications/PhpStorm* | head -1)"'
+alias phps='open -a "$(ls -dt /Applications/PhpStorm* | head -1)"'
 
 
 # Reload zsh after editing
@@ -171,3 +104,70 @@ alias dk-cpup="docker-compose $@ up -d"
 alias dk-cpdown='docker-compose down'
 alias dk-cpstart='docker-compose start'
 alias dk-cpstop='docker-compose stop'
+
+# Upgrade packages and cleanup
+alias up='
+    [[ $(brew -v 2> /dev/null) ]] && (upbrew);
+    [[ $(pip -v 2> /dev/null)  ]] && (uppip);
+    [[ $(npm -v 2> /dev/null)  ]] && (upnpm);
+    [[ $(uname -s) == "Darwin" ]] && (upmac);
+    [[ $(brew -v 2> /dev/null) ]] && (backup-brew);
+'
+
+alias upbrew='
+    printf "${BR}${YELLOW}List Brew outdated formula and cask${BR}";
+    printf "------------------------------------------------------------------${BR}${NOCOLOR}";
+    brew update && brew outdated;
+
+    printf "${BR}${YELLOW}Update Brew formula and cask\n";
+    printf "------------------------------------------------------------------${BR}${NOCOLOR}";
+    brew upgrade;
+    printf "${GREEN}Done.${BR}${NOCOLOR}";
+
+    printf "${BR}${YELLOW}Cleanup Brew${BR}";
+    printf "------------------------------------------------------------------${BR}${NOCOLOR}";
+    brew autoremove;
+    brew cleanup -s --prune 1;
+    printf "${GREEN}Done.${BR}${NOCOLOR}";
+'
+
+alias uppip='
+    printf "${BR}${YELLOW}List outdated PIP packages${BR}";
+    printf "------------------------------------------------------------------${BR}${NOCOLOR}";
+    pip-review
+    printf "${BR}${YELLOW}Update PIP packages${BR}";
+    printf "------------------------------------------------------------------${BR}${NOCOLOR}";
+    pip-review --local --auto
+    printf "${BR}${YELLOW}Purge PIP cache${BR}";
+    printf "------------------------------------------------------------------${BR}${NOCOLOR}";
+    pip cache purge
+    printf "${GREEN}Done.${BR}${NOCOLOR}";
+'
+
+alias upnpm='
+    printf "${BR}${YELLOW}List outdated NPM packages${BR}";
+    printf "------------------------------------------------------------------${BR}${NOCOLOR}";
+    npm outdated -g --depth=0
+    printf "${BR}${YELLOW}Update NPM packages${BR}";
+    printf "------------------------------------------------------------------${BR}${NOCOLOR}";
+    npm update -g
+    printf "${GREEN}Done.${BR}${NOCOLOR}";
+'
+
+alias upmac='
+    printf "${BR}${YELLOW}List MacOS available updates${BR}";
+    printf "------------------------------------------------------------------${BR}${BR}${NOCOLOR}";
+    softwareupdate --list;
+    printf "${BR}Run following command to install all MacOS available updates:${BR}";
+    printf "softwareupdate -i -a${BR}"
+
+'
+
+# Backup brew packages
+alias backup-brew='
+    printf "${BR}${YELLOW}Backup brew packages${BR}";
+    printf "------------------------------------------------------------------${BR}${NOCOLOR}";
+    brew bundle dump --describe --force --file ~/.dotfiles/Brewfile;
+    printf "${GREEN}Done.${BR}${NOCOLOR}";
+   
+'

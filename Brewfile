@@ -57,8 +57,6 @@ cask "glance"
 cask "google-chrome"
 # Free and open-source media player
 cask "iina"
-# File system integration
-cask "macfuse"
 # Tool to control external monitor brightness & volume
 cask "monitorcontrol"
 # Tool to create and manage Outline servers, powered by Shadowsocks
@@ -87,8 +85,6 @@ cask "tor-browser"
 cask "transmission"
 # VPN client for secure internet access and private browsing
 cask "tunnelbear"
-# Disk encryption software focusing on security based on TrueCrypt
-cask "veracrypt"
 # Open-source code editor
 cask "visual-studio-code"
 # Video communication and virtual meeting platform
@@ -104,6 +100,7 @@ vscode "EditorConfig.EditorConfig"
 vscode "esbenp.prettier-vscode"
 vscode "formulahendry.code-runner"
 vscode "mikestead.dotenv"
+vscode "ms-python.debugpy"
 vscode "ms-python.python"
 vscode "ms-python.vscode-pylance"
 vscode "ms-vscode-remote.remote-ssh"
