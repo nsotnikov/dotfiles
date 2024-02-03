@@ -34,7 +34,6 @@ alias e-hass="[[ ! -d "~/Volumes/hass_config" ]] && mount-hass; cd ~/Volumes/has
 
 alias phps='open -a "$(ls -dt /Applications/PhpStorm* | head -1)"'
 
-
 # Reload zsh after editing
 alias rzsh='source ~/.zshrc' 
 
